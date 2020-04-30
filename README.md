@@ -13,10 +13,11 @@ Languages Stages (Welcome to PR your usage languages)
 
 | Features/Languages  |   Java |  Python  | Go  |  Kotlin | TypeScript | C     | C# | Scala | C++ |
 |---------------------|--------|----------|-----|---------|------------|-------|----|-------|-------|
-| syntax parse        |    ✅  |      ✅  |   ✅ |   TBC   |     ✅     | TBC   |  🆕 | 🆕 | 🆕 |
-| function call graph |    ✅  |          |      |         |            |       |     |   |    |
-| arch/package graph  |    ✅  |          |      |         |            |       |     |   |    |
+| syntax parse        |    ✅  |      ✅  |   ✅ |   🆕    |     ✅     | 🆕    |  🆕 | 🆕 | 🆕 |
+| function call       |    ✅  |     🆕   |      |         |   🆕       |       |     |   |    |
+| arch/package        |    ✅  |          |      |         |            |       |     |   |    |
 | real world validate |    ✅  |          |      |         |            |       |     |   |    |
+| expression  (TBD)   |        |          |      |         |            |       |     |   |    |
 
 Language Family [wiki](https://en.wikipedia.org/wiki/First-class_function)
 
@@ -230,7 +231,7 @@ code_call
 
 ## Development（Chinese Version）
 
-环境准备：Intellij IDEA、JDK 1.8、Antlr CLI（可选，参见[Antlr](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md))
+环境准备：Intellij IDEA、JDK 1.8、Antlr 4.8 CLI（可选，参见[Antlr](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md))
 
 1. Clone 代码：``git clone https://github.com/phodal/chapi``
 

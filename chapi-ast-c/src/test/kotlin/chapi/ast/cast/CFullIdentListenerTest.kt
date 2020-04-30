@@ -59,9 +59,9 @@ struct list_el {
         val code = """
 struct Person {
     int age;
-}
+};
 
-int is_old(Person* p) {
+int is_old(Person* p, int age) {
     return p->age > 60;
 }
 """
@@ -108,6 +108,51 @@ struct Info{
 };
 """
         val codeFile = CAnalyser().analysis(code, "helloworld.c")
+    }
+
+    @Test
+    internal fun shouldIdentifyFunctionName() {
+        val code = """
+int is_old(Person* p) {
+    return p->age > 60;
+}
+"""
+        val codeFile = CAnalyser().analysis(code, "helloworld.c")
+        assertEquals(codeFile.DataStructures[0].Functions[0].Name, "is_old")
+    }
+
+    @Test
+    internal fun shouldIdentifyFunctionSingleParameter() {
+        val code = """
+int is_old(Person* p) {
+    return p->age > 60;
+}
+        """
+        val codeFile = CAnalyser().analysis(code, "helloworld.c")
+        val parameters = codeFile.DataStructures[0].Functions[0].Parameters
+        assertEquals(parameters.size, 1)
+        assertEquals(parameters[0].TypeType, "Person*")
+        assertEquals(parameters[0].TypeValue, "p")
+    }
+
+    @Test
+    internal fun shouldIdentifyFunctionMultiParameters() {
+        val code = """
+int is_old(Person* p, int a, double b) {
+    return p->age > 60;
+}
+        """
+        val codeFile = CAnalyser().analysis(code, "helloworld.c")
+        val parameters = codeFile.DataStructures[0].Functions[0].Parameters
+        assertEquals(parameters.size, 3)
+        assertEquals(parameters[0].TypeType, "Person*")
+        assertEquals(parameters[0].TypeValue, "p")
+
+        assertEquals(parameters[1].TypeType, "int")
+        assertEquals(parameters[1].TypeValue, "a")
+
+        assertEquals(parameters[2].TypeType, "double")
+        assertEquals(parameters[2].TypeValue, "b")
     }
 
     @Test
